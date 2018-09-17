@@ -1,5 +1,7 @@
-# [telegram-support-bot](https://github.com/bostrot/telegram-support-bot)
+# [telegram-support-bot docker-compose edition](https://github.com/kilex/telegram-support-bot)
 is a support bot for telegram bots, using the Telegraf framework (by [@dotcypress](https://github.com/dotcypress)). It let users create tickets which will be send to a staff group and can be answered by a reply.
+
+fork from [bostrot](https://github.com/bostrot/telegram-support-bot)
 
 [![Bot API Version](https://img.shields.io/badge/Bot%20API-v3.1-f36caf.svg?style=flat-square)](https://core.telegram.org/bots/api)
 [![NPM Version](https://img.shields.io/npm/v/telegraf.svg?style=flat-square)](https://www.npmjs.com/)
@@ -20,28 +22,11 @@ is a support bot for telegram bots, using the Telegraf framework (by [@dotcypres
 [Telegraf documentation](http://telegraf.js.org).
 
 ## Installation
-
-Install Node ( > 6.2 ) and npm ( > 5 ).
-
-Run it
-```bash
-git clone https://github.com/bostrot/telegram-support-bot.git
-cd telegram-support-bot
-npm i
-node bin/support.js
+fix copy config.js.example to config.js, fix config.js, after:
 ```
-
-Or: via install script (this will create two autostart files for systemctl and enable both):
-
-```bash
-git clone https://github.com/bostrot/telegram-support-bot.git
-cd telegram-support-bot
-sudo bash setup
-sudo systemctl start YOUR_SUPPORT_BOT_SERVICE_NAME
+docker-compose build
+docker-compose up -d
 ```
-
-Enter the bot location (ex. /home/bots/mybot.js) when asked and then your bot name (ex. mybot)
-`setup` will create two systemctl links in order that your bot will be automatically restarted when it crashes and runs in the background.
 
 ## Configuration
 
@@ -54,7 +39,7 @@ module.exports = {
     bot_token: "YOUR_BOT_TOKEN", // support bot token
     staffchat_id: "SUPERGROUP_CHAT_ID",  // telegram staff group chat id eg. -123456789
     owner_id: "YOUR_TELEGRAM_ID",
-    supported_bot: "service_name", // service name of the supported bot leave empty if you don't have one
+    supported_bot: "", // service name of the supported bot leave empty if you don't have one
     startCommandText: "Welcome in our support chat! Ask your question here.",
     faqCommandText: "Check out our FAQ here: Address to your FAQ",
 };

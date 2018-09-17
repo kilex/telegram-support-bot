@@ -1,0 +1,9 @@
+version: "2"
+services:
+  support:
+    build: 
+      context: .
+      dockerfile: docker/support.Dockerfile
+    volumes:
+      - ./loc:/app/loc
+
